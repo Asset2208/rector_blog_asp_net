@@ -1,0 +1,85 @@
+﻿@model rector_blog.Models.QuestionBlogPostModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>QuestionBlogPostModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionModels.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionModels.Title)
+        </dd>
+
+        <dt>
+            Question
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionModels.Content)
+        </dd>
+
+        <dt>
+            Asked date-time
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionModels.Created_date)
+        </dd>
+
+        <dt>
+            User Info
+        </dt>
+
+        <dd>
+            @ViewBag.User.Email
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Views)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Views)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+
+        <dt>Categories</dt>
+
+        <dd>
+            <ul>
+                @foreach (rector_blog.Models.QuestionCategoryModels questionCategory in Model.QuestionCategories)
+                {
+                    <li>@questionCategory.Name</li>
+                }
+            </ul>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

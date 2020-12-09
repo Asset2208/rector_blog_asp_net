@@ -1,0 +1,380 @@
+﻿@model rector_blog.Models.BlogPostsModels
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Details";
+}
+<head>
+    <script src="@Url.Content("~/Content/tinymce_latest_custom/tinymce/tinymce.min.js")"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+</head>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>
+    html {
+        font-size: 16px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .media-body .author {
+        display: block;
+        font-size: 1rem;
+        color: #000;
+        font-weight: 700;
+    }
+
+    .media-body .metadata {
+        display: block;
+        color: #000;
+        font-size: .75rem;
+    }
+
+    .title-comments {
+        font-size: 1.4rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+        color: rgba(0,0,0,.87);
+        margin-bottom: 1rem;
+        padding-bottom: .25rem;
+        border-bottom: 1px solid rgba(34,36,38,.15);
+    }
+
+    .media-left img {
+        width: 70px;
+    }
+
+    .media {
+        margin-top: 0px;
+    }
+
+    .media-text {
+        margin-bottom: 10px;
+    }
+</style>
+
+@*<div>
+    <h4>BlogPostsModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogCategoryModels.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogCategoryModels.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Views)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Views)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Enabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Enabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments_enabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments_enabled)
+        </dd>
+
+        <dt>Comments</dt>
+
+        <dd>
+            <ul>
+                @foreach (rector_blog.Models.CommentModels comment in Model.Comments)
+                {
+                    <li>@comment.Content (@comment.User_id)</li>
+                }
+            </ul>
+        </dd>
+    </dl>
+</div>*@
+
+<div class="row mt-5">
+    <div class="col-8">
+        <h4>@Html.DisplayFor(model => model.Title)</h4>
+        <ul class="list-inline mt-3">
+            <li class="list-inline-item"><h6 class="card-subtitle mb-2 text-muted">At @Html.DisplayFor(model => model.Created_date)</h6></li>
+            <li class="list-inline-item"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="mb-auto" style="max-width: 20px; max-height: 20px;" /></li>
+            <li class="list-inline-item"><h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Views)</h6></li>
+        </ul>
+        <hr class="my-4">
+        <img src="@Html.DisplayFor(model => model.ImageUrl)" class="card-img-top" style="width: 538px; height: 358px;" alt="...">
+        <hr class="my-4">
+        <p>@Html.Raw(Model.Content)</p>
+        
+    </div>
+    <div class="col-4">
+        <div class="jumbotron jumbotron-fluid" style="font-style: italic;">
+            <div class="container">
+                <h3 style="font-style: italic;">Дорогие друзья! Приветствую вас на своем блоге!</h3>
+                <p class="lead">Эта площадка является эффективной и оперативной формой коммуникаций со всеми, кто интересуется университетом «Туран». Надеюсь, реализация диалога и обратной связи будет работать на снижение административных барьеров, генерирование ваших идей, предложений и воплощение их в жизнь</p>
+            </div>
+        </div>
+        <div>
+            <h4>Archives</h4>
+            <ul>
+                <li><a href="#">September 2020</a></li>
+                <li><a href="#">September 2020</a></li>
+                <li><a href="#">September 2020</a></li>
+                <li><a href="#">September 2020</a></li>
+                <li><a href="#">September 2020</a></li>
+                <li><a href="#">September 2020</a></li>
+                <li><a href="#">September 2020</a></li>
+                <li><a href="#">September 2020</a></li>
+                <li><a href="#">September 2020</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Follow us</h4>
+            <ul>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Facebook</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "viewDialog", data_dialog_title = "Редактирование модели" }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "viewDialog", data_dialog_title = "Удаление модели" }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<div class="comments">
+    <h3 class="title-comments">Комментарии (@Model.Comments.Count)</h3>
+    @foreach (rector_blog.Models.CommentModels comment in Model.Comments)
+    {
+        <div class="media">
+            <div class="media-body">
+                <div class="author">Дима</div>
+                <div class="panel-heading mb-2">
+                    <div class="metadata">
+                        <span class="date">@comment.Created_date</span>
+                    </div>
+                </div>
+                <p>@comment.Content</p>
+
+                @*<div class="media mt-3">
+                        <div class="media-body ml-5">
+                            <h5 class="mt-0">Media heading</h5>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+    }
+
+    <!--<ul class="media-list">-->
+    <!-- Комментарий (уровень 1) -->
+    <!--<li class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object img-circle" src="avatar1-70.jpg" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="author">Дима</div>
+                    <div class="metadata">
+                        <span class="date">16 ноября 2015, 13:43</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="media-text text-justify">Lorem ipsum dolor sit amet. Blanditiis praesentium voluptatum deleniti atque. Autem vel illum, qui blanditiis praesentium voluptatum deleniti atque corrupti. Dolor repellendus cum soluta nobis. Corporis suscipit laboriosam, nisi ut enim. Debitis aut perferendis doloribus asperiores repellat. sint, obcaecati cupiditate non numquam eius. Itaque earum rerum facilis. Similique sunt in ea commodi. Dolor repellendus numquam eius modi. Quam nihil molestiae consequatur, vel illum, qui ratione voluptatem accusantium doloremque.</div>
+                    <div class="pull-right"><a class="btn btn-info" href="#">Ответить</a></div>
+                </div>
+            </div>-->
+    <!-- Вложенный медиа-компонент (уровень 2) -->
+    <!--<div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object img-circle" src="avatar2-70.jpg" alt="">
+            </a>
+        </div>
+        <div class="media-body">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="author">Пётр</div>
+                    <div class="metadata">
+                        <span class="date">19 ноября 2015, 10:28</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="media-text text-justify">Dolor sit, amet, consectetur, adipisci velit. Aperiam eaque ipsa, quae. Amet, consectetur, adipisci velit, sed quia consequuntur magni dolores. Ab illo inventore veritatis et quasi architecto. Quisquam est, omnis voluptas nulla. Obcaecati cupiditate non numquam eius modi tempora. Corporis suscipit laboriosam, nisi ut labore et aut reiciendis.</div>
+                    <div class="pull-right"><a class="btn btn-info" href="#">Ответить</a></div>
+                </div>
+            </div>-->
+    <!-- Вложенный медиа-компонент (уровень 3) -->
+    <!--<div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object img-circle" src="avatar3-70.jpg" alt="">
+            </a>
+        </div>
+        <div class="media-body">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="author">Александр</div>
+                    <div class="metadata">
+                        <span class="date">Вчера в 19:34</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="media-text text-justify">Amet, consectetur, adipisci velit, sed ut labore et dolore. Maiores alias consequatur aut perferendis doloribus asperiores. Voluptas nulla vero eos.</div>
+                    <div class="pull-right"><a class="btn btn-info" href="#">Ответить</a></div>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+    <!-- Конец вложенного комментария (уровень 3) -->
+    <!--</div>
+    </div>-->
+    <!-- Конец вложенного комментария (уровень 2) -->
+    <!-- Ещё один вложенный медиа-компонент (уровень 2) -->
+    <!--<div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object img-circle" src="avatar4-70.jpg" alt="">
+            </a>
+        </div>
+        <div class="media-body">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="author">Сергей</div>
+                    <div class="metadata">
+                        <span class="date">20 ноября 2015, 17:45</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="media-text text-justify">Ex ea voluptate velit esse, quam nihil impedit, quo minus id quod. Totam rem aperiam eaque ipsa, quae ab illo. Minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid. Iste natus error sit voluptatem. Sunt, explicabo deleniti atque corrupti, quos dolores et expedita.</div>
+                    <div class="pull-right"><a class="btn btn-info" href="#">Ответить</a></div>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+    <!-- Конец ещё одного вложенного комментария (уровень 2) -->
+    <!--</div>
+    </li>-->
+    <!-- Конец комментария (уровень 1) -->
+    <!-- Комментарий (уровень 1) -->
+    <!--<li class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object img-circle" src="avatar5-70.jpg" alt="">
+            </a>
+        </div>
+        <div class="media-body">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="author">Иван</div>
+                    <div class="metadata">
+                        <span class="date">Вчера в 17:34</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="media-text text-justify">Eum iure reprehenderit, qui dolorem eum fugiat. Sint et expedita distinctio velit. Architecto beatae vitae dicta sunt, explicabo unde omnis. Qui aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto. Nemo enim ipsam voluptatem quia. Eos, qui ratione voluptatem sequi nesciunt, neque porro. A sapiente delectus, ut enim ipsam voluptatem, quia non recusandae architecto beatae.</div>
+                    <div class="pull-right"><a class="btn btn-info" href="#">Ответить</a></div>
+                </div>
+            </div>
+
+        </div>
+    </li>-->
+    <!-- Конец комментария (уровень 1) -->
+    <!-- Комментарий (уровень 1) -->
+    <!--<li class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object img-circle" src="avatar1-70.jpg" alt="">
+            </a>
+        </div>
+        <div class="media-body">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="author">Дима</div>
+                    <div class="metadata">
+                        <span class="date">3 минуты назад</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="media-text text-justify">Tempore, cum soluta nobis est et quas. Quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in. Obcaecati cupiditate non recusandae impedit. Hic tenetur a sapiente delectus. Facere possimus, omnis dolor repellendus inventore veritatis et voluptates. Ipsa, quae ab illo inventore veritatis et quasi architecto beatae. In culpa, qui in culpa. Cum soluta nobis est laborum et aut perferendis doloribus. Vitae dicta sunt, explicabo perspiciatis. Amet, consectetur, adipisci velit, sed quia voluptas sit, aspernatur. Obcaecati cupiditate non provident, similique sunt in. Reiciendis voluptatibus maiores alias consequatur aut officiis debitis aut perferendis doloribus asperiores. Assumenda est, omnis dolor repellendus voluptas assumenda est omnis.</div>
+                    <div class="pull-right"><a class="btn btn-info" href="#">Ответить</a></div>
+                </div>
+            </div>
+
+        </div>
+    </li>-->
+    <!-- Конец комментария (уровень 1) -->
+    <!--</ul>-->
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $.ajaxSetup({ cache: false });
+
+        $(".viewDialog").on("click", function (e) {
+            e.preventDefault();
+
+            $("<div></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .dialog({
+                    title: $(this).attr("data-dialog-title"),
+                    close: function () { $(this).remove() },
+                    modal: true
+                })
+                .load(this.href);
+        });
+    });
+</script>

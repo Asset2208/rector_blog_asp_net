@@ -1,0 +1,148 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using rector_blog.Models;
+
+namespace rector_blog.Controllers
+{
+    public class BlogCategoryController : Controller
+    {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: BlogCategory
+        public ActionResult Index()
+        {
+            return View(db.BlogCategoryModel.ToList());
+        }
+
+        // GET: BlogCategory/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BlogCategoryModels blogCategoryModels = db.BlogCategoryModel.Find(id);
+            if (blogCategoryModels == null)
+            {
+                return HttpNotFound();
+            }
+            return View(blogCategoryModels);
+        }
+
+        // GET: BlogCategory/Create
+        public ActionResult Create()
+        {
+            return View("Create");
+        }
+
+        // POST: BlogCategory/Create
+        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
+        // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,Name,Enabled,Created_date")] BlogCategoryModels blogCategoryModels)
+        {
+            if (ModelState.IsValid)
+            {
+                db.BlogCategoryModel.Add(blogCategoryModels);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(blogCategoryModels);
+        }
+
+        [HttpPost]
+        public JsonResult IsURLExist(string ImageUrl)
+        {
+            return Json(IsURLExistbyURL(ImageUrl));
+        }
+
+
+        public bool IsURLExistbyURL(string ImgUrl)
+        {
+            return false;
+
+            /*HttpWebRequest req = (HttpWebRequest)WebRequest.Create(Url);
+            req.AllowAutoRedirect = false;
+            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+
+            if (res.StatusCode == HttpStatusCode.OK)
+                return true;
+            else
+                return false;*/
+        }
+
+        // GET: BlogCategory/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BlogCategoryModels blogCategoryModels = db.BlogCategoryModel.Find(id);
+            if (blogCategoryModels == null)
+            {
+                return HttpNotFound();
+            }
+            return View(blogCategoryModels);
+        }
+
+        // POST: BlogCategory/Edit/5
+        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
+        // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,Name,Enabled,Created_date")] BlogCategoryModels blogCategoryModels)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(blogCategoryModels).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(blogCategoryModels);
+        }
+
+        // GET: BlogCategory/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BlogCategoryModels blogCategoryModels = db.BlogCategoryModel.Find(id);
+            if (blogCategoryModels == null)
+            {
+                return HttpNotFound();
+            }
+            return View(blogCategoryModels);
+        }
+
+        // POST: BlogCategory/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            BlogCategoryModels blogCategoryModels = db.BlogCategoryModel.Find(id);
+            db.BlogCategoryModel.Remove(blogCategoryModels);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}
