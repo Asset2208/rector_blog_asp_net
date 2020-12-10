@@ -15,10 +15,4 @@ namespace rector_blog.Models
         public virtual StudModels StudModels { get; set; }
     }
 
-    //public class StudAddressContext : DbContext
-    //{
-    //    public DbSet<StudAddressModels> StudAddressModel { get; set; }
-
-    //    public System.Data.Entity.DbSet<rector_blog.Models.StudModels> StudModels { get; set; }
-    //}
 }
