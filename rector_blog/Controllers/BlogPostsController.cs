@@ -15,10 +15,27 @@ namespace rector_blog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: BlogPosts
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var blogPostModel = db.BlogPostModel.Include(b => b.BlogCategoryModels);
+        //    return View(blogPostModel.ToList());
+        //}
+        public ActionResult Index(int page = 1)
         {
-            var blogPostModel = db.BlogPostModel.Include(b => b.BlogCategoryModels);
-            return View(blogPostModel.ToList());
+            var blogPostModel = db.BlogPostModel.Include(b => b.BlogCategoryModels).OrderByDescending(b => b.Created_date).ToList();
+
+            int pageSize = 4; // количество объектов на страницу
+            IEnumerable<BlogPostsModels> blogPostsPerPages = blogPostModel.Skip((page - 1) * pageSize).Take(pageSize);
+            PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = blogPostModel.Count() };
+            BlogPageViewModel ivm = new BlogPageViewModel { PageInfo = pageInfo, BlogPostsModels = blogPostsPerPages };
+            return View(ivm);
+        }
+
+        public ActionResult Search(string search)
+        {
+            var blogPostModel = db.BlogPostModel.Include(b => b.BlogCategoryModels).Where(a => a.Title.Contains(search)).ToList();
+            ViewBag.Posts = blogPostModel;
+            return View("Search");
         }
 
         public ActionResult AutocompleteSearch(string term)

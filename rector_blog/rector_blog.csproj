@@ -226,6 +226,10 @@
     <Compile Include="Migrations\202012180631081_EditQuestionUserName.Designer.cs">
       <DependentUpon>202012180631081_EditQuestionUserName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012181248558_AddUserInfoCommentTable.cs" />
+    <Compile Include="Migrations\202012181248558_AddUserInfoCommentTable.Designer.cs">
+      <DependentUpon>202012181248558_AddUserInfoCommentTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogCategoryModels.cs" />
@@ -551,6 +555,7 @@
     <Content Include="Views\Test\Details.cshtml" />
     <Content Include="Views\Test\Edit.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\BlogPosts\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -596,6 +601,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012180631081_EditQuestionUserName.resx">
       <DependentUpon>202012180631081_EditQuestionUserName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012181248558_AddUserInfoCommentTable.resx">
+      <DependentUpon>202012181248558_AddUserInfoCommentTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

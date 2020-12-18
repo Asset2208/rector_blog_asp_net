@@ -192,26 +192,48 @@
 
 <div class="comments">
     <h3 class="title-comments">Комментарии (@Model.Comments.Count)</h3>
-    @foreach (rector_blog.Models.CommentModels comment in Model.Comments)
+    @if (Request.IsAuthenticated)
+    {
+        @*<ul class="list-inline mt-3">
+                @Html.ActionLink("Оставить комментарий", "Create", "Comment", new { }, new { @class = "btn btn-success mb-5 viewDialog", data_dialog_title = "Создание модели" })
+            </ul>*@
+        <form action="/Comment/Create" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="Is_reply_to_id" value="0" />
+            <input type="hidden" name="User_id" value="@User.Identity.GetUserId()" />
+            <input type="hidden" name="Enabled" value="true" />
+            <input type="hidden" name="Created_date" value="@DateTime.Now" />
+            <input type="hidden" name="BlogPostModelsId" value="@Model.Id" />
+            <div class="form-group">
+                <textarea type="text" style="width: 100%;" name="Content" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">Добавить</button>
+            </div>
+        </form>
+        <hr class="my-4" />
+    }
+    else
+    {
+        <div class="alert alert-primary mt-5 mb-5" role="alert">
+            Чтобы оставить комментарий, пожалуйста авторизуйтесь!
+        </div>
+    }
+    @foreach (rector_blog.Models.CommentModels comment in Model.Comments.Reverse())
     {
         <div class="media">
             <div class="media-body">
-                <div class="author">Дима</div>
+                <div class="author">@comment.ApplicationUser.Email</div>
                 <div class="panel-heading mb-2">
                     <div class="metadata">
                         <span class="date">@comment.Created_date</span>
                     </div>
                 </div>
-                <p>@comment.Content</p>
+                <p>@Html.Raw(comment.Content)</p>
 
-                @*<div class="media mt-3">
-                        <div class="media-body ml-5">
-                            <h5 class="mt-0">Media heading</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>*@
             </div>
         </div>
+        <hr class="my-4" />
     }
 
     <!--<ul class="media-list">-->

@@ -1,0 +1,51 @@
+﻿@model rector_blog.Models.BlogPostsModels
+@{
+    ViewBag.Title = "Результаты поиска";
+}
+
+<h2>Результаты поиска</h2>
+
+<style>
+    .asdasd { /* Запрещаем перенос строк */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        /* Добавляем многоточие */
+    }
+
+    p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+@Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-primary mt-5" })
+
+<div class="row mt-5">
+    @foreach (rector_blog.Models.BlogPostsModels item in ViewBag.Posts)
+    {
+        <div class="col-lg-6 mb-4 all-news">
+            <div class="card" style="min-height: 642px; max-height: 642px;">
+                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="" class="card-img-top" style="width: 538px; height: 358px;">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                    <ul class="list-inline mt-3">
+                        <li class="list-inline-item"><h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.Created_date)</h6></li>
+                        <li class="list-inline-item"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="mb-auto" style="max-width: 20px; max-height: 20px;" /></li>
+                        <li class="list-inline-item"><h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.Views)</h6></li>
+                    </ul>
+                    @*<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.Created_date)</h6>*@
+                    <div class="asdasd">
+                        <p>@Html.Raw(item.Content)</p>
+                    </div>
+                    @Html.ActionLink("Подробнее", "Details", new { id = item.Id }, new { @class = "btn btn-outline-success btn-sm" })
+
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+

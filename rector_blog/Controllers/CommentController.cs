@@ -56,9 +56,10 @@ namespace rector_blog.Controllers
         {
             if (ModelState.IsValid)
             {
+                commentModels.ApplicationUser = db.Users.Find(commentModels.User_id);
                 db.CommentModel.Add(commentModels);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "BlogPosts", new { id = commentModels.BlogPostModelsId});
             }
 
             ViewBag.BlogPostModelsId = new SelectList(db.BlogPostModel, "Id", "Title", commentModels.BlogPostModelsId);

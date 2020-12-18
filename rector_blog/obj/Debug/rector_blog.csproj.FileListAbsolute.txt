@@ -272,3 +272,4 @@ C:\Users\asetb\Documents\GitHub\rector_blog_asp_net\rector_blog\obj\Debug\rector
 C:\Users\asetb\Documents\GitHub\rector_blog_asp_net\rector_blog\obj\Debug\rector_blog.pdb
 C:\Users\asetb\Documents\GitHub\rector_blog_asp_net\rector_blog\obj\Debug\rector_blog.Migrations.editQuestionTable.resources
 C:\Users\asetb\Documents\GitHub\rector_blog_asp_net\rector_blog\obj\Debug\rector_blog.Migrations.EditQuestionUserName.resources
+C:\Users\asetb\Documents\GitHub\rector_blog_asp_net\rector_blog\obj\Debug\rector_blog.Migrations.AddUserInfoCommentTable.resources

@@ -20,4 +20,10 @@ namespace rector_blog.Models
         public IEnumerable<QuestionBlogPostModels> QuestionBlogPostModels { get; set; }
         public PageInfo PageInfo { get; set; }
     }
+
+    public class BlogPageViewModel
+    {
+        public IEnumerable<BlogPostsModels> BlogPostsModels { get; set; }
+        public PageInfo PageInfo { get; set; }
+    }
 }

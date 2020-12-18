@@ -42,8 +42,8 @@
             <div class="card mb-5">
                 <div class="card-body">
                     <p>Тема вопроса: <b>@Html.DisplayFor(modelItem => item.QuestionModels.Title)</b></p>
-                    <p>Вопрос задал: @Html.DisplayFor(modelItem => item.QuestionModels.ApplicationUser.UserName)</p>
-                    <p>Вопрос: @Html.DisplayFor(modelItem => item.QuestionModels.Content)</p>
+                    <p>Вопрос задал: <b>@Html.DisplayFor(modelItem => item.QuestionModels.ApplicationUser.UserName)</b></p>
+                    <p>Вопрос: <b><i>@Html.DisplayFor(modelItem => item.QuestionModels.Content)</i></b></p>
                     <ul class="list-inline mt-3">
                         <li class="list-inline-item"><small class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.QuestionModels.Created_date)</small></li>
                         <li class="list-inline-item"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="mb-auto" style="max-width: 20px; max-height: 20px;" /></li>

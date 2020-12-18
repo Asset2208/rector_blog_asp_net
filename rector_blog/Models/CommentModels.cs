@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace rector_blog.Models
@@ -11,8 +12,10 @@ namespace rector_blog.Models
     {
         public int Id { get; set; }
         public int Is_reply_to_id { get; set; }
+        [AllowHtml]
         public string Content { get; set; }
         public string User_id { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public bool Enabled { get; set; }
         public DateTime Created_date { get; set; }
         public int? BlogPostModelsId { get; set; }
