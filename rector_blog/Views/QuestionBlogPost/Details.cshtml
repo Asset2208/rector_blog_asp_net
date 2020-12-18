@@ -1,5 +1,5 @@
 ﻿@model rector_blog.Models.QuestionBlogPostModels
-
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Details";
 }
@@ -79,7 +79,32 @@
 
     </dl>
 </div>
+@if (User.IsInRole("Admin"))
+{
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Редактирование модели" }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Удаление модели" }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+}
+
+<script>
+    $(document).ready(function () {
+
+        $.ajaxSetup({ cache: false });
+
+        $(".viewDialog").on("click", function (e) {
+            e.preventDefault();
+
+            $("<div></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .dialog({
+                    title: $(this).attr("data-dialog-title"),
+                    close: function () { $(this).remove() },
+                    modal: true
+                })
+                .load(this.href);
+        });
+    });
+</script>

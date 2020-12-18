@@ -15,6 +15,7 @@ namespace rector_blog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Question
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var questionModel = db.QuestionModel.Include(q => q.QuestionBlogPostModels);
@@ -22,6 +23,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: Question/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,7 +43,7 @@ namespace rector_blog.Controllers
         public ActionResult Create()
         {
             ViewBag.ID = new SelectList(db.QuestionBlogPostModel, "ID", "Answer");
-            return View();
+            return PartialView();
         }
 
         // POST: Question/Create
@@ -53,9 +55,10 @@ namespace rector_blog.Controllers
         {
             if (ModelState.IsValid)
             {
+                questionModels.ApplicationUser = db.Users.Find(questionModels.User_id);
                 db.QuestionModel.Add(questionModels);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "QuestionBlogPost");
             }
 
             ViewBag.ID = new SelectList(db.QuestionBlogPostModel, "ID", "Answer", questionModels.ID);
@@ -63,6 +66,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: Question/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -98,6 +102,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: Question/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

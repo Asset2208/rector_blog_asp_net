@@ -12,7 +12,6 @@ namespace rector_blog.Models
         public int ID { get; set; }
         [Required]
         [Display(Name = "Имя категории")]
-        [Remote("IsURLExist", "BlogCategory", HttpMethod = "POST", ErrorMessage = "The image is not exist by this URL")]
         public string Name { get; set; }
 
         [Display(Name = "Активен ли?")]

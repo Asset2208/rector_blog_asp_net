@@ -14,6 +14,7 @@ namespace rector_blog.Models
         public string Title { get; set; }
         public string Content { get; set; }
         public string User_id { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public bool Is_answered { get; set; }
         public DateTime Created_date { get; set; }
         public virtual QuestionBlogPostModels QuestionBlogPostModels { get; set; }

@@ -1,51 +1,131 @@
-﻿@model IEnumerable<rector_blog.Models.QuestionBlogPostModels>
+﻿@*@model IEnumerable<rector_blog.Models.QuestionBlogPostModels>*@
+@model rector_blog.Models.PageViewModel
+@using Microsoft.AspNet.Identity
+@using rector_blog.Helpers
+
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    body {
+        background-color: #AED6F1;
+    }
+</style>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.QuestionModels.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Views)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Answer)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuestionModels.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Views)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Answer)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+@if (User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Ответить на вопросы", "Create", new { }, new { @class = "btn btn-success mt-5" })
 }
 
-</table>
+
+
+
+<div class="row mt-5">
+    <div class="col-sm-6 offset-3">
+        @if (Request.IsAuthenticated)
+        {
+            <ul class="list-inline mt-3">
+                @Html.ActionLink("Задать вопрос", "Create", "Question", new { }, new { @class = "btn btn-success mb-5 viewDialog", data_dialog_title = "Создание модели" })
+            </ul>
+
+        }
+        else
+        {
+            <div class="alert alert-dark mt-5 mb-5" role="alert">
+                Чтобы задать вопрос, пожалуйста авторизуйтесь!
+            </div>
+        }
+        @foreach (var item in Model.QuestionBlogPostModels)
+        {
+            <div class="card mb-5">
+                <div class="card-body">
+                    <p>Тема вопроса: <b>@Html.DisplayFor(modelItem => item.QuestionModels.Title)</b></p>
+                    <p>Вопрос задал: @Html.DisplayFor(modelItem => item.QuestionModels.ApplicationUser.UserName)</p>
+                    <p>Вопрос: @Html.DisplayFor(modelItem => item.QuestionModels.Content)</p>
+                    <ul class="list-inline mt-3">
+                        <li class="list-inline-item"><small class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.QuestionModels.Created_date)</small></li>
+                        <li class="list-inline-item"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="mb-auto" style="max-width: 20px; max-height: 20px;" /></li>
+                        <li class="list-inline-item"><h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.Views)</h6></li>
+                    </ul>
+                    <hr class="my-4" />
+                    <p>
+                        Ответ: @Html.DisplayFor(modelItem => item.Answer)
+                    </p>
+                    <ul class="list-inline mt-3">
+                        <li class="list-inline-item"><small class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.Created_date)</small></li>
+                    </ul>
+
+                    @*@Html.ActionLink("Подробнее", "Details", new { id = item.Id }, new { @class = "btn btn-outline-success btn-sm" })*@
+                    @Html.ActionLink("Подробнее", "Details", new { id = item.ID })
+                </div>
+            </div>
+        }
+        <div class="btn-group">
+            @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+        </div>
+    </div>
+</div>
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionModels.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Views)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Answer)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionModels.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Views)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Answer)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>*@
+<script>
+    $(document).ready(function () {
+
+        $.ajaxSetup({ cache: false });
+
+        $(".viewDialog").on("click", function (e) {
+            e.preventDefault();
+
+            $("<div></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .dialog({
+                    title: $(this).attr("data-dialog-title"),
+                    close: function () { $(this).remove() },
+                    modal: true
+                })
+                .load(this.href);
+        });
+    });
+</script>

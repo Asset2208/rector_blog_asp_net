@@ -185,6 +185,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Migrations\202011041216412_InitialCreate.cs" />
     <Compile Include="Migrations\202011041216412_InitialCreate.Designer.cs">
       <DependentUpon>202011041216412_InitialCreate.cs</DependentUpon>
@@ -217,6 +218,14 @@
     <Compile Include="Migrations\202012091652135_editPostTable.Designer.cs">
       <DependentUpon>202012091652135_editPostTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012180537223_editQuestionTable.cs" />
+    <Compile Include="Migrations\202012180537223_editQuestionTable.Designer.cs">
+      <DependentUpon>202012180537223_editQuestionTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012180631081_EditQuestionUserName.cs" />
+    <Compile Include="Migrations\202012180631081_EditQuestionUserName.Designer.cs">
+      <DependentUpon>202012180631081_EditQuestionUserName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BlogCategoryModels.cs" />
@@ -224,6 +233,7 @@
     <Compile Include="Models\CommentModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\QuestionBlogPostModels.cs" />
     <Compile Include="Models\QuestionCategoryModels.cs" />
     <Compile Include="Models\QuestionModels.cs" />
@@ -580,6 +590,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012091652135_editPostTable.resx">
       <DependentUpon>202012091652135_editPostTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012180537223_editQuestionTable.resx">
+      <DependentUpon>202012180537223_editQuestionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012180631081_EditQuestionUserName.resx">
+      <DependentUpon>202012180631081_EditQuestionUserName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

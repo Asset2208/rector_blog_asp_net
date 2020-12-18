@@ -13,7 +13,7 @@
 <style>
     html {
         font-size: 16px;
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .media-body .author {
@@ -53,85 +53,85 @@
 </style>
 
 @*<div>
-    <h4>BlogPostsModels</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BlogCategoryModels.Name)
-        </dt>
+        <h4>BlogPostsModels</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BlogCategoryModels.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BlogCategoryModels.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.BlogCategoryModels.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Created_date)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Created_date)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Created_date)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Created_date)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Content)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Content)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ImageUrl)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Views)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Views)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Views)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Views)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Enabled)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Enabled)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Enabled)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Enabled)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Comments_enabled)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Comments_enabled)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Comments_enabled)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Comments_enabled)
+            </dd>
 
-        <dt>Comments</dt>
+            <dt>Comments</dt>
 
-        <dd>
-            <ul>
-                @foreach (rector_blog.Models.CommentModels comment in Model.Comments)
-                {
-                    <li>@comment.Content (@comment.User_id)</li>
-                }
-            </ul>
-        </dd>
-    </dl>
-</div>*@
+            <dd>
+                <ul>
+                    @foreach (rector_blog.Models.CommentModels comment in Model.Comments)
+                    {
+                        <li>@comment.Content (@comment.User_id)</li>
+                    }
+                </ul>
+            </dd>
+        </dl>
+    </div>*@
 
 <div class="row mt-5">
     <div class="col-8">
@@ -145,7 +145,7 @@
         <img src="@Html.DisplayFor(model => model.ImageUrl)" class="card-img-top" style="width: 538px; height: 358px;" alt="...">
         <hr class="my-4">
         <p>@Html.Raw(Model.Content)</p>
-        
+
     </div>
     <div class="col-4">
         <div class="jumbotron jumbotron-fluid" style="font-style: italic;">
@@ -180,11 +180,15 @@
 </div>
 
 
+@if (User.IsInRole("Admin"))
+{
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "viewDialog", data_dialog_title = "Редактирование модели" }) |
     @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "viewDialog", data_dialog_title = "Удаление модели" }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+}
+
 
 <div class="comments">
     <h3 class="title-comments">Комментарии (@Model.Comments.Count)</h3>

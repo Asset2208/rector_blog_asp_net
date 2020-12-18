@@ -78,7 +78,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: BlogPosts/Create
-        [Authorize(Roles = "Admin,User")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.BlogCategoryModelsId = new SelectList(db.BlogCategoryModel, "ID", "Name");

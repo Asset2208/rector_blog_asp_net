@@ -8,6 +8,7 @@ namespace rector_blog.Models
         [Required]
         [Display(Name = "Адрес электронной почты")]
         public string Email { get; set; }
+
     }
 
     public class ExternalLoginListViewModel

@@ -18,10 +18,21 @@ namespace rector_blog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: QuestionBlogPost
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var questionBlogPostModels = db.QuestionBlogPostModel.Include(q => q.QuestionModels);
+        //    return View(questionBlogPostModels.OrderByDescending(b => b.Created_date).ToList());
+        //}
+
+        public ActionResult Index(int page = 1)
         {
-            var questionBlogPostModels = db.QuestionBlogPostModel.Include(q => q.QuestionModels);
-            return View(questionBlogPostModels.ToList());
+            var questionBlogPostModels = db.QuestionBlogPostModel.Include(q => q.QuestionModels).OrderByDescending(b => b.Created_date).ToList();
+
+            int pageSize = 3; // количество объектов на страницу
+            IEnumerable<QuestionBlogPostModels> questionPostsPerPages = questionBlogPostModels.Skip((page - 1) * pageSize).Take(pageSize);
+            PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = questionBlogPostModels.Count() };
+            PageViewModel ivm = new PageViewModel { PageInfo = pageInfo, QuestionBlogPostModels = questionPostsPerPages };
+            return View(ivm);
         }
 
         // GET: QuestionBlogPost/Details/5

@@ -41,6 +41,9 @@
                 <li class="nav-item">
                     @Html.ActionLink("Новости", "Index", "BlogPosts", new { area = "" }, new { @class = "nav-link" })
                 </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Вопросы/Ответы", "Index", "QuestionBlogPost", new { area = "" }, new { @class = "nav-link" })
+                </li>
             </ul>
 
             @Html.Partial("_LoginPartial")

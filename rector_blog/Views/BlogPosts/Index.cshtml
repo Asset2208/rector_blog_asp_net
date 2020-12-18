@@ -16,6 +16,7 @@
         -webkit-box-orient: vertical;
         /* Добавляем многоточие */
     }
+
     p {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
@@ -23,11 +24,13 @@
 
 @if (User.IsInRole("Admin"))
 {
-<p>
-    @Html.ActionLink("Create New", "Create", new { }, new { @class = "viewDialog", data_dialog_title = "Создание модели" })
-    @*@Html.ActionLink("Create New", "Create", new { }, new { @class = "viewDialog", data_dialog_title = "Создание модели" })*@
-</p>
+    <p>
+        @Html.ActionLink("Create New", "Create", new { }, new { @class = "viewDialog", data_dialog_title = "Создание модели" })
+        @*@Html.ActionLink("Create New", "Create", new { }, new { @class = "viewDialog", data_dialog_title = "Создание модели" })*@
+    </p>
 }
+
+
 
 
 <div class="container">
