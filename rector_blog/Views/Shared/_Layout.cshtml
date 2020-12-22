@@ -45,6 +45,23 @@
                 <li class="nav-item">
                     @Html.ActionLink("Связаться", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
                 </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Админ
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/BlogCategory/Index">Категория для постов</a>
+                            <a class="dropdown-item" href="/QuestionCategory/Index">Категория для вопросов</a>
+                            <a class="dropdown-item" href="/Comment/Index">Комментарий</a>
+                            <a class="dropdown-item" href="/Question/Index">Вопросы</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/Files/Index">Файлы</a>
+                        </div>
+                    </li>
+                }
+
             </ul>
 
             @Html.Partial("_LoginPartial")

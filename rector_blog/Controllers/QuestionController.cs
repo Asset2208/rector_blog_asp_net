@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using rector_blog.Models;
+using rector_blog.Filters;
 
 namespace rector_blog.Controllers
 {
@@ -16,7 +17,7 @@ namespace rector_blog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Question
-        [Authorize(Roles = "Admin")]
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Index()
         {
             var questionModel = db.QuestionModel.Include(q => q.QuestionBlogPostModels);
@@ -24,7 +25,6 @@ namespace rector_blog.Controllers
         }
 
         // GET: Question/Details/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -80,7 +80,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: Question/Edit/5
-        [Authorize(Roles = "Admin")]
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -101,6 +101,7 @@ namespace rector_blog.Controllers
         // POST: Question/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        [CustomAuth(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Title,Content,User_id,Is_answered,Created_date")] QuestionModels questionModels)
@@ -116,7 +117,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: Question/Delete/5
-        [Authorize(Roles = "Admin")]
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -83,7 +83,7 @@
     }
 
     #accordion .panel {
-        border: 1px solid #bf6026;
+        border: 3px solid #1F6492;
         border-radius: 0;
         box-shadow: none;
         margin-left: 50px;
@@ -99,7 +99,7 @@
         #accordion .panel-heading:before,
         #accordion .panel-heading:after {
             content: "";
-            border-right: 8px solid #bf6026;
+            border-right: 8px solid #1F6492;
             border-bottom: 8px solid transparent;
             border-top: 8px solid transparent;
             position: absolute;
@@ -122,37 +122,38 @@
         border: none;
         font-size: 20px;
         font-weight: 600;
-        color: #bf6026;
+        color: #1F6492;
         position: relative;
     }
 
         #accordion .panel-title a:before,
         #accordion .panel-title a.collapsed:before {
-            content: "\f068";
+            content: "-";
             font-family: "Font Awesome 5 Free";
             font-weight: 900;
             width: 35px;
-            height: 35px;
-            line-height: 35px;
-            font-size: 15px;
-            color: #bf6026;
+            
+            
+            font-size: 35px;
+            color: #1F6492;
             text-align: center;
-            border: 1px solid #bf6026;
+            border: 3px solid #1F6492;
             position: absolute;
             top: 0;
             left: -50px;
-            transition: all 0.5s ease 0s;
+            
+
         }
 
         #accordion .panel-title a.collapsed:before {
-            content: "\f067";
+            content: "+";
         }
 
     #accordion .panel-body {
         padding: 0 15px 15px;
         border: none;
         font-size: 14px;
-        color: #807e7e;
+        color: #1F6492;
         line-height: 28px;
     }
 
@@ -166,13 +167,13 @@
         <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Section 1
+                    Есть ли возможность перевестись с другого вуза в IU после 1-го семестра с сохранением гранта?
                 </a>
             </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                <p><b>В соответствии с приказом Министра образования и науки Республики Казахстана от «30» октября 2018 № 595 « Об утверждении Типовых правил деятельности организаций образования соответствующих типов» и от «20» апреля 2011 года №152 «Об утверждений Правил организаций учебного процесса по кредитной технологий обучения» обучающийся имеет права перевода с сохранением государственного образовательного гранта с согласия первого руководителя вуза в котором ранее обучался при условии полного завершения академического периода.</b></p>
             </div>
         </div>
     </div>
@@ -180,13 +181,15 @@
         <div class="panel-heading" role="tab" id="headingTwo">
             <h4 class="panel-title">
                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Section 2
+                    У вас есть список студенческих организаций нашего университета?
                 </a>
             </h4>
         </div>
         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+
+                <p></p><p>Особое внимание IU уделяет развитию личностных качеств, лидерских навыков и творческих способностей студентов. И сами студенты заботятся о том, чтобы их жизнь в университете проходила яркой и незабываемой. Активные и самые талантливые студенты самостоятельно проводят разные мероприятия, возглавляют проекты, вызывающие восхищение и удивление. Именно поэтому, каждый день в IU – это праздник.</p><p></p><p><b>В IU действуют следующие студенческие организации:</b></p><ol><li>Студенческое Правительство (СП) - «<b>IU Students Government</b>» - студенческое правительство, без которого невозможно представить ни одно крупное мероприятие IT университета.<br> Их называют "СПшниками", "SGшниками", "Тусовщиками" и не просто так. Самые крутые мероприятия - Teambuilding, Посвящение, Ice Party, IU Grand Ball, Golden Middle, Miss IU, Nauryz и др. организованы нашим Студенческим Правительством.</li><li>Министерство Культуры (<b>МК</b>) - отвечают за организацию различных мероприятий в стенах университета для студентов и гостей.</li><li>Министерство PR (<b>МPR</b>) - отвечают за профориентацию, организацию «Дня открытых дверей» и др.</li><li>Служба безопасности (<b>СБ</b>) - отвечает за внутренний порядок обучающихся, за спортивную и активную жизнь студентов.</li><li>«<b>UNION</b>» - организация, которая занимается благотворительностью. Мало кто знает, но члены клуба «Union» очень много работают и помогают всем нуждающимся людям вне зависимости от возраста.<br> Подарить улыбку тем, кто давно не ощущал радость и тепло; помочь взрослому поколению идти в ногу со временем; поддержать сирот и инвалидов; организовать целые концерты в поддержку детей — всё это «Union»</li><li>«<b>IT Legion</b>» - сборная IT университета по футзалу, баскетболу, волейболу, настольному теннису, шахматам и тогыз кумалак. Любая сборная нуждается в поддержке болельщиков. А кому, как не активистам поддерживать свою команду?<br> Фан-клуб "IT LEGION" на каждом спортивном турнире поддерживает нашу команду.</li><li>«<b>IU ShadowS</b>» - танцевальный клуб IT университета, который зажигает на каждом мероприятии. Без них невозможно представить ни один наш ивэнт! Ребята выступают не только внутри, но и за пределами университета (одним из таких выходов из зоны комфорта стал конкурс "U-5" от проекта "Youthquake.KZ"). По итогам IU Choice Awards 2019, "ShadowS" - клуб года!</li><li>«<b>IU DEBATE CLUB</b>» - дебатный клуб IT университет., который за годы своего существования добился многого: Финалисты таких соревнований как "БЕТА ТУРНИР 2019", "SIRIUS CUP 2019", "KAZNU PARTY CUP 2019", "АЙТЫШ CUP 2018" и победители "NIS CUP 2019", "КУБОК U5", "Городской турнир колледжа ТУРАН" и др.<br> 9. «<b>ENACTUS IU</b>» - команда студентов, которые разрабатывают различные бизнес проекты. Ребята создают собственные проекты, которые направлены на повышение уровня и качества жизни людей.<br> Также, они принимают участие во многих форумах и фестивалях: "Enactus Qazaqstan Next Generation Leaders Forum", "Enactus Kazakhstan National Expo 2019", "Enactus Summer Camp 2019" и другие!</li><li>«<b>IU Family</b>» – волонтёрская организация. Вы когда-нибудь хотели стать волонтером? Совсем недавно открывшаяся команда «IU FAMILY» то, что вы ищите! С момента открытия эти ребята стали незаменимыми помощниками университета, без которых не пройдёт ни одно мероприятие городского или республиканского масштаба. Фестиваль креативных идей "HackDay", Национальная Студенческая Лига по футзалу, Чемпионат мира по футзалу.<br> 11. «<b>ANTEIKU</b>» - аниме клуб IT университета, который часто устраивает показы японских анимационных фильмов на большом экране для всех желающих. А с недавних пор они организуют различные творческие и культурные ярмарки и мастер-классы.<br> 12. «<b>Радио IT FM</b>» - студенческая организация IT университета, которая ведет радио, организует встречи с известными ведущими, проводит мероприятия, делится классным настроением. Сейчас у IT FM три направления:<br> <b>Radio</b>: утренние эфиры с новостями, сообщениями слушателей, гороскопом и розыгрышами. Анонс грядущих событий университета.</li></ol><p><b>SMM</b>: пиар кого-то из слушателей в утреннем посте. Публикация интересных новостей из мира шоу-бизнеса и не только! Активный пиар студенческой жизни в социальных сетях.<br> <b>TV</b>: интервью у лидеров студенческих организаций, видео отчёты с мероприятий. В планах снять сериал про наш университет.<br> «Cinema club» – это творческая организация IU, созданная с целью объединения всех любителей данного искусства.</p><ol><li>«<b>Theatre IT</b>» - театральный клуб, это поэтические вечера, постановки, сценки из фильмов или литературы.<br> Театральный клуб - это то место, где вы можете поделиться своим творчеством на сцене, разделить свои чувства с аудиторией и просто приятно провести время.</li><li>«<b>Ray's Sup Team</b>» - неофициальная, но крутая организация IT университета, которая создает платформу для обсуждения и информирования студентов. Также они снимают креативные видео-отчеты о мероприятиях университета.</li><li>«<b>Light Studio</b>» - команда талантливых ребят, создающие качественный медиаконтент, которые объеденились чтобы делиться идеями, опытом и продвигать свои творения в массы.</li></ol>
+
             </div>
         </div>
     </div>
@@ -194,13 +197,91 @@
         <div class="panel-heading" role="tab" id="headingThree">
             <h4 class="panel-title">
                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Section 3
+                    Есть ли военная кафедра в IU?
                 </a>
             </h4>
         </div>
         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
             <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+
+                <p></p><p>В 2018 году в соответствии с Приказом Министра обороны РК в IU открыта военная кафедра, специализирующаяся на подготовке специалистов по кибербезопасности.</p><p>В настоящий момент на Военной кафедре на основе получаемого в университете высшего профессионального образования осуществляется военная подготовка студентов по программе подготовки офицеров запаса по трем военно-учетным специальностям:</p><ul><li>боевое применение общевойсковых подразделений, частей и соединений;</li><li>боевое применение подразделений и частей беспилотных летательных аппаратов;</li><li>кибербезопасность.</li></ul><p>Также в Университете действует Центр компетенции по кибербезопасности.</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Имеется ли заочное/вечернее/дистанционное обучение в МУИТ?
+                </a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                
+                <p></p><p>В Казахстане принято решение с 1 января 2019 года отменить заочную форму обучения. Изменения не коснутся тех, кто поступил в вуз на заочное отделение до 2018 года включительно. Им дадут доучится по старой схеме.</p><p>В АО «Международном университете информационных технологий» прием на заочное, вечернее обучение не осуществляется. Университет в учебном процессе использует систему MOODLE, которая дает возможность дистанционного обучения (проводить занятия и прием заданий онлайн). Но официальная форма ДОТ разработана для обучающихся послевузовского образования (магистратура, докторантура).</p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    Гарантированно ли трудоустройство кадетов МУИТ после выпуска?
+                </a>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div class="panel-body">
+
+                <p></p><p>Трудоустраиваемость студентов выпускного курса 94%, оставшиеся 6% самозанятые, то есть лица не заинтересованные в официальном трудоустройстве, в связи с чем, можем сказать, что трудоустройство не гарантировано на 100%, но обеспечить трудоустройством студентов, обращающихся в Центр карьеры обязательна.</p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSix">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    Какие документы нужны для поступления в вуз?
+                </a>
+            </h4>
+        </div>
+        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+            <div class="panel-body">
+                
+                <p></p><ol><li>Аттестат/диплом с приложением (ОРИГИНАЛ)</li><li>Сертификат ЕНТ (ОРИГИНАЛ)</li><li>Фото 3*4 (8шт.) каждое фото подписать «Ф.И.О»</li><li>Справка 086-У со снимком флюолографии (ОРИГИНАЛ) не ранее марта этого года</li><li>КОПИИ уд.личности (2шт.)</li><li>КОПИЯ прививочной карты (форма 063, или паспорт здоровья ребенка)</li><li>КОПИЯ приписного свидетельства (для юношей)</li><li>КОПИИ грамот и дипломов ( за последние три года по профильным дисциплинам)</li></ol><p>*при наличии сертификата IELTS (оценка не менее 5.0) оригинал иметь при себе.</p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSeven">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    Есть ли возможность поступления в МУИТ гражданам других государств?
+                </a>
+            </h4>
+        </div>
+        <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+            <div class="panel-body">
+                <p>Согласно части четвертой пункта 2 статьи 8 Закона РК « Об образовании» право на получение иностранцам на конкурсной основе в соответствии с государственным образовательным заказом бесплатного технического и профессионального, послесреднего, высшего и послевузовского образования определяется международными договорами Республики Казахстан.</p>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingEight">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                    Как поступить в ВУЗ на платной основе?
+                </a>
+            </h4>
+        </div>
+        <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+            <div class="panel-body">
+                <p></p><p>Согласно к приказу Министра образования и науки Республики Казахстан от 31 октября 2018 года № 600 «Типовые правила приема на обучение в организации образования, реализующие образовательные программы высшего образования» выпускникам организаций среднего, технического и профессионального или послесреднего образования, поступающих на образовательные программы высшего образования, требующие творческой подготовки, прошедшим ЕНТ и желающим обучаться на платное обучение в ВУЗы по результатам ЕНТ и творческих экзаменов необходимо набрать не менее 50 баллов, в том числе не менее 5-ти баллов – по истории Казахстана, грамотности чтения – язык обучения, и не менее 5-ти баллов по каждому творческому экзамену.</p><p>Лица, не набравшие пороговый балл, установленный в пункте 4 настоящих Типовых правил, по результатам ЕНТ, зачисляются в ВУЗы по очной форме обучения на платной основе до завершения первого академического периода.</p><p>По завершении 1 (первого) академического периода обучения в ВУЗе данные лица повторно сдают ЕНТ в установленные сроки в соответствии с Правилами проведения единого национального тестирования и комплексного тестирования, утвержденными приказом Министра образования и науки Республики Казахстан от 2 мая 2017 года № 204 (зарегистрирован в Реестре государственной регистрации нормативных правовых актов под № 15173) (далее – приказ № 204).</p><p>Лица, не набравшие пороговый балл, установленный в пункте 4 настоящих Типовых правил, по итогам ЕНТ, сдаваемого по завершению 1 (первого) академического периода подлежат отчислению из ВУЗа.</p>
             </div>
         </div>
     </div>

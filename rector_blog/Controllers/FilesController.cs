@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using rector_blog.Models;
+using rector_blog.Filters;
 
 namespace rector_blog.Controllers
 {
@@ -17,6 +18,7 @@ namespace rector_blog.Controllers
 
 
         // GET: Files  
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Index(FileUpload model)
         {
             List<FileUpload> list = new List<FileUpload>();
@@ -34,6 +36,7 @@ namespace rector_blog.Controllers
             return View(model);
         }
 
+        [CustomAuth(Roles = "Admin")]
         [HttpPost]
         public ActionResult Index(HttpPostedFileBase files)
         {
@@ -89,6 +92,7 @@ namespace rector_blog.Controllers
             con.Close();
             return dtData;
         }
+
 
         private bool SaveFile(FileUpload model)
         {

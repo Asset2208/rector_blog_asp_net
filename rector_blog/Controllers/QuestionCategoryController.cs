@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using rector_blog.Models;
+using rector_blog.Filters;
 
 namespace rector_blog.Controllers
 {
@@ -15,12 +16,14 @@ namespace rector_blog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: QuestionCategory
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.QuestionCategoryModel.ToList());
         }
 
         // GET: QuestionCategory/Details/5
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +41,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: QuestionCategory/Create
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +50,7 @@ namespace rector_blog.Controllers
         // POST: QuestionCategory/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        [CustomAuth(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Enabled,Created_date")] QuestionCategoryModels questionCategoryModels)
@@ -61,6 +66,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: QuestionCategory/Edit/5
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +84,7 @@ namespace rector_blog.Controllers
         // POST: QuestionCategory/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        [CustomAuth(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Enabled,Created_date")] QuestionCategoryModels questionCategoryModels)
@@ -92,6 +99,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: QuestionCategory/Delete/5
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

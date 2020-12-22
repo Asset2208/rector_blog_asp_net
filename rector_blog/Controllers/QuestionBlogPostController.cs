@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using rector_blog.Models;
 using System.Net.Mail;
+using rector_blog.Filters;
 
 namespace rector_blog.Controllers
 {
@@ -59,6 +60,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: QuestionBlogPost/Create
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.Categories = db.QuestionCategoryModel.ToList();
@@ -69,6 +71,7 @@ namespace rector_blog.Controllers
         // POST: QuestionBlogPost/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        [CustomAuth(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "ID,Views,Created_date,Answer")] QuestionBlogPostModels questionBlogPostModels, int[] selectedCourses)
@@ -126,6 +129,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: QuestionBlogPost/Edit/5
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -144,6 +148,7 @@ namespace rector_blog.Controllers
         // POST: QuestionBlogPost/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        [CustomAuth(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Views,Created_date,Answer")] QuestionBlogPostModels questionBlogPostModels)
@@ -159,6 +164,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: QuestionBlogPost/Delete/5
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
