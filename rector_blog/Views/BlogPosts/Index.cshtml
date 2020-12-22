@@ -2,6 +2,7 @@
 @model rector_blog.Models.BlogPageViewModel
 @using Microsoft.AspNet.Identity
 @using rector_blog.Helpers
+
 @{
     ViewBag.Title = "Index";
 }
@@ -75,9 +76,10 @@
             </div>
         </div>
     }
-    <div class="btn-group">
-        @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
-    </div>
+    
+</div>
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
 </div>
 
 

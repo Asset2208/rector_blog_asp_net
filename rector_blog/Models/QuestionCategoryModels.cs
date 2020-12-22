@@ -11,6 +11,7 @@ namespace rector_blog.Models
     public class QuestionCategoryModels : IValidatableObject
     {
         public int ID { get; set; }
+        [Display(Name = "Имя категории")]
         public string Name { get; set; }
         public bool Enabled { get; set; }
         public DateTime Created_date { get; set; }

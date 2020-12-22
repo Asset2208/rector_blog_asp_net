@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using rector_blog.Models;
+using rector_blog.Filters;
 
 namespace rector_blog.Controllers
 {
@@ -95,16 +96,17 @@ namespace rector_blog.Controllers
         }
 
         // GET: BlogPosts/Create
-        [Authorize(Roles = "Admin")]
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.BlogCategoryModelsId = new SelectList(db.BlogCategoryModel, "ID", "Name");
-            return View();
+            return PartialView();
         }
 
         // POST: BlogPosts/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        [CustomAuth(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
@@ -122,6 +124,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: BlogPosts/Edit/5
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -140,6 +143,7 @@ namespace rector_blog.Controllers
         // POST: BlogPosts/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в разделе https://go.microsoft.com/fwlink/?LinkId=317598.
+        [CustomAuth(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Created_date,Title,Content,ImageUrl,Views,Enabled,Comments_enabled,BlogCategoryModelsId")] BlogPostsModels blogPostsModels)
@@ -155,6 +159,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: BlogPosts/Delete/5
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

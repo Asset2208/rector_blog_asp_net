@@ -62,7 +62,7 @@ namespace rector_blog.Controllers
         public ActionResult Create()
         {
             ViewBag.Categories = db.QuestionCategoryModel.ToList();
-            ViewBag.ID = new SelectList(db.QuestionModel.Where(q => q.Is_answered == false), "ID", "Content");
+            ViewBag.ID = new SelectList(db.QuestionModel.Where(q => q.Is_answered == false), "ID", "Content", "Created_date");
             return View("Create");
         }
 

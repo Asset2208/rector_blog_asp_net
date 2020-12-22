@@ -183,7 +183,7 @@
 @if (User.IsInRole("Admin"))
 {
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "viewDialog", data_dialog_title = "Редактирование модели" }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "viewDialog", data_dialog_title = "Удаление модели" }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

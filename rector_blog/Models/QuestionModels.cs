@@ -11,7 +11,9 @@ namespace rector_blog.Models
     {
 
         public int ID { get; set; }
+        [Display(Name = "Тема")]
         public string Title { get; set; }
+        [Display(Name = "Вопрос")]
         public string Content { get; set; }
         public string User_id { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }

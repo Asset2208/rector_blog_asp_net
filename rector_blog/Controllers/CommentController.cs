@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using rector_blog.Models;
+using rector_blog.Filters;
 
 namespace rector_blog.Controllers
 {
@@ -15,6 +16,7 @@ namespace rector_blog.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Comment
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Index()
         {
             var commentModels = db.CommentModel.Include(c => c.BlogPostModels);
@@ -22,6 +24,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: Comment/Details/5
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -67,7 +70,7 @@ namespace rector_blog.Controllers
         }
 
         // GET: Comment/Edit/5
-        [Authorize(Roles = "Admin,User")]
+        [CustomAuth(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

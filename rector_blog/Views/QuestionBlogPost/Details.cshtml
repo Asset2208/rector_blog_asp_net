@@ -82,7 +82,8 @@
 @if (User.IsInRole("Admin"))
 {
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Редактирование модели" }) |
+    @Html.ActionLink("Изменить ответ", "Edit", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Редактирование модели" }) |
+    @Html.ActionLink("Изменить вопрос", "Edit", "Question", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Изменение вопроса" }) |
     @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Удаление модели" }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -27,7 +27,7 @@
         @if (Request.IsAuthenticated)
         {
             <ul class="list-inline mt-3">
-                @Html.ActionLink("Задать вопрос", "Create", "Question", new { }, new { @class = "btn btn-success mb-5 viewDialog", data_dialog_title = "Создание модели" })
+                @Html.ActionLink("Задать вопрос", "Create", "Question", new { }, new { @class = "btn btn-success mb-5 viewDialog", data_dialog_title = "Задать вопрос" })
             </ul>
 
         }
@@ -58,7 +58,10 @@
                     </ul>
 
                     @*@Html.ActionLink("Подробнее", "Details", new { id = item.Id }, new { @class = "btn btn-outline-success btn-sm" })*@
-                    @Html.ActionLink("Подробнее", "Details", new { id = item.ID })
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Подробнее", "Details", new { id = item.ID })
+                    }
                 </div>
             </div>
         }
