@@ -24,18 +24,30 @@ namespace rector_blog.Controllers
 
         // GET: BlogCategory/Details/5
         [CustomAuth(Roles = "Admin")]
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int page = 1)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogCategoryModels blogCategoryModels = db.BlogCategoryModel.Find(id);
+            //QuestionCategoryModels questionCategoryModels = db.QuestionCategoryModel.Include(q => q.QuestionBlogPosts).FirstOrDefault(q => q.ID == id);
+
+            BlogCategoryModels blogCategoryModels = db.BlogCategoryModel.Include(b => b.BlogPosts).OrderByDescending(b => b.Created_date).FirstOrDefault(b => b.ID == id);
+            ViewBag.BlogCategoryModels = blogCategoryModels;
             if (blogCategoryModels == null)
             {
                 return HttpNotFound();
             }
-            return View(blogCategoryModels);
+
+            var blogPostModel = db.BlogPostModel.Include(b => b.BlogCategoryModels).Where(b => b.BlogCategoryModelsId == id).OrderByDescending(b => b.Created_date).ToList();
+
+            int pageSize = 4; // количество объектов на страницу
+            IEnumerable<BlogPostsModels> blogPostsPerPages = blogPostModel.Skip((page - 1) * pageSize).Take(pageSize);
+            PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = blogPostModel.Count() };
+            BlogPageViewModel ivm = new BlogPageViewModel { PageInfo = pageInfo, BlogPostsModels = blogPostsPerPages };
+            return View(ivm);
+
+            //return View(blogCategoryModels);
         }
 
         // GET: BlogCategory/Create

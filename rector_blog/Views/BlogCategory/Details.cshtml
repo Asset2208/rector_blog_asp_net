@@ -1,42 +1,64 @@
-﻿@model rector_blog.Models.BlogCategoryModels
+﻿@*@model rector_blog.Models.BlogCategoryModels*@
+@model rector_blog.Models.BlogPageViewModel
+@using rector_blog.Helpers
 
-@{
-    ViewBag.Title = "Details";
-}
+<h2 class="mt-5">Категория</h2>
 
-<h2>Details</h2>
+<style>
+    .asdasd { /* Запрещаем перенос строк */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        /* Добавляем многоточие */
+    }
+
+    p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
 
 <div>
-    <h4>BlogCategoryModels</h4>
+    <h4>@ViewBag.BlogCategoryModels.Name</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="row mt-5">
+        @foreach (var item in Model.BlogPostsModels)
+        {
+            <div class="col-lg-6 mb-4 all-news">
+                <div class="card wow fadeInLeftBig" style="min-height: 642px; max-height: 642px;">
+                    <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="" class="card-img-top" style="width: 538px; height: 358px;">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <ul class="list-inline mt-3">
+                            <li class="list-inline-item"><h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.Created_date)</h6></li>
+                            <li class="list-inline-item"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="mb-auto" style="max-width: 20px; max-height: 20px;" /></li>
+                            <li class="list-inline-item"><h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.Views)</h6></li>
+                        </ul>
+                        @*<h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => item.Created_date)</h6>*@
+                        <div class="asdasd">
+                            <p>@Html.Raw(item.Content)</p>
+                        </div>
+                        @Html.ActionLink("Подробнее", "Details", "BlogPosts", new { id = item.Id }, new { @class = "btn btn-outline-success btn-sm" })
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                    </div>
+                </div>
+            </div>
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Enabled)
-        </dt>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Enabled)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Created_date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Created_date)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Details", "BlogCategory", new { id = ViewBag.BlogCategoryModels.ID, page = x }))
+</div>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = ViewBag.BlogCategoryModels.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+

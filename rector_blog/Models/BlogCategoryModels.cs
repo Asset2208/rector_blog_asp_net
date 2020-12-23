@@ -20,6 +20,12 @@ namespace rector_blog.Models
         [Display(Name = "Дата создания")]
         public DateTime Created_date { get; set; }
 
+        public virtual ICollection<BlogPostsModels> BlogPosts { get; set; }
+        public BlogCategoryModels()
+        {
+            BlogPosts = new List<BlogPostsModels>();
+        }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             List<ValidationResult> errors = new List<ValidationResult>();

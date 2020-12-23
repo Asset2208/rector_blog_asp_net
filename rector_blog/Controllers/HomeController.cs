@@ -16,6 +16,7 @@ namespace rector_blog.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+            ViewBag.Link = "/Files/DownloadReadyFile?filePath=/UploadedFiles/my-file-20201222183452907.pdf&fileName=Academic_calendar_2020_2021.pdf";
 
             return View("About");
         }

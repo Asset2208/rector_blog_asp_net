@@ -113,9 +113,20 @@ namespace rector_blog.Controllers
         {
             string fullName = Server.MapPath("~" + filePath);
 
+
             byte[] fileBytes = GetFile(fullName);
             return File(
                 fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, filePath);
+        }
+
+        public ActionResult DownloadReadyFile(string filePath, string fileName)
+        {
+            string fullName = Server.MapPath("~" + filePath);
+
+
+            byte[] fileBytes = GetFile(fullName);
+            return File(
+                fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
         byte[] GetFile(string s)

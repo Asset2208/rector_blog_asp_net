@@ -6,6 +6,8 @@
 <head>
     <script src="@Url.Content("~/Content/tinymce_latest_custom/tinymce/tinymce.min.js")"></script>
     <script>tinymce.init({ selector: 'textarea' });</script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
 </head>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -137,6 +139,7 @@
     <div class="col-8">
         <h4>@Html.DisplayFor(model => model.Title)</h4>
         <ul class="list-inline mt-3">
+            <li class="list-inline-item"><a href="/BlogCategory/Details/@Model.BlogCategoryModelsId">@Model.BlogCategoryModels.Name</a></li>
             <li class="list-inline-item"><h6 class="card-subtitle mb-2 text-muted">At @Html.DisplayFor(model => model.Created_date)</h6></li>
             <li class="list-inline-item"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="mb-auto" style="max-width: 20px; max-height: 20px;" /></li>
             <li class="list-inline-item"><h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Views)</h6></li>
@@ -155,18 +158,16 @@
             </div>
         </div>
         <div>
-            <h4>Archives</h4>
-            <ul>
-                <li><a href="#">September 2020</a></li>
-                <li><a href="#">September 2020</a></li>
-                <li><a href="#">September 2020</a></li>
-                <li><a href="#">September 2020</a></li>
-                <li><a href="#">September 2020</a></li>
-                <li><a href="#">September 2020</a></li>
-                <li><a href="#">September 2020</a></li>
-                <li><a href="#">September 2020</a></li>
-                <li><a href="#">September 2020</a></li>
-            </ul>
+            <h4>Интересные</h4>
+            @foreach (rector_blog.Models.BlogPostsModels item in ViewBag.TopNews)
+            {
+                <div class="card mb-1" style="width: 350px;">
+                    <img src="@item.ImageUrl" class="card-img-top" alt="..." style="width: 350px; height: 233px;">
+                    <div class="card-body">
+                        <a href="/BlogPosts/Details/@item.Id"><p class="card-text">@item.Title</p></a>
+                    </div>
+                </div>
+            }
         </div>
         <div>
             <h4>Follow us</h4>
@@ -207,6 +208,8 @@
             <div class="form-group">
                 <textarea type="text" style="width: 100%;" name="Content" class="form-control"></textarea>
             </div>
+            <div class="g-recaptcha" data-sitekey="6Ld1YBAaAAAAAFZPOV4F8LmgRFE5alSgKeRTgWIX"></div>
+
             <div class="form-group">
                 <button class="btn btn-primary">Добавить</button>
             </div>

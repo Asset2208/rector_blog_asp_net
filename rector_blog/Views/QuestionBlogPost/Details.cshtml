@@ -4,108 +4,138 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 class="text-center mt-5">Детали вопроса</h2>
 
-<div>
-    <h4>QuestionBlogPostModels</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.QuestionModels.Title)
-        </dt>
+<div class="row mt-5">
+    <div class="col-sm-6 offset-3">
+        <div class="card mb-5 wow zoomIn">
+            <div class="card-body">
+                <ul class="list-inline">
+                    @foreach (rector_blog.Models.QuestionCategoryModels questionCategory in Model.QuestionCategories)
+                    {
+                        <li class="list-inline-item"><a href="">@questionCategory.Name</a></li>
+                    }
+                </ul>
+                <p>Тема вопроса: <b>@Html.DisplayFor(model => model.QuestionModels.Title)</b></p>
+                <p>Вопрос задал: <b>@Html.DisplayFor(model => model.QuestionModels.ApplicationUser.UserName)</b></p>
+                <p>Вопрос: <b><i>@Html.DisplayFor(model => model.QuestionModels.Content)</i></b></p>
+                <ul class="list-inline mt-3">
+                    <li class="list-inline-item"><small class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.QuestionModels.Created_date)</small></li>
+                    <li class="list-inline-item"><img src="https://cdn2.iconfinder.com/data/icons/picol-vector/32/view-512.png" class="mb-auto" style="max-width: 20px; max-height: 20px;" /></li>
+                    <li class="list-inline-item"><h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Views)</h6></li>
+                </ul>
+                <hr class="my-4" />
+                <p>
+                    Ответ: @Html.DisplayFor(model => model.Answer)
+                </p>
+                <ul class="list-inline mt-3">
+                    <li class="list-inline-item"><small class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Created_date)</small></li>
+                </ul>
 
-        <dd>
-            @Html.DisplayFor(model => model.QuestionModels.Title)
-        </dd>
-
-        <dt>
-            Question
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QuestionModels.Content)
-        </dd>
-
-        <dt>
-            Asked date-time
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QuestionModels.Created_date)
-        </dd>
-
-        <dt>
-            User Info
-        </dt>
-
-        <dd>
-            @ViewBag.User.Email
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Views)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Views)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Created_date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Created_date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Answer)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Answer)
-        </dd>
-
-        <dt>Categories</dt>
-
-        <dd>
-            <ul>
-                @foreach (rector_blog.Models.QuestionCategoryModels questionCategory in Model.QuestionCategories)
-                {
-                    <li>@questionCategory.Name</li>
-                }
-            </ul>
-        </dd>
-
-    </dl>
+            </div>
+        </div>
+    </div>
 </div>
-@if (User.IsInRole("Admin"))
-{
-<p>
-    @Html.ActionLink("Изменить ответ", "Edit", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Редактирование модели" }) |
-    @Html.ActionLink("Изменить вопрос", "Edit", "Question", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Изменение вопроса" }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Удаление модели" }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-}
+    @*<div>
+            <h4>QuestionBlogPostModels</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.QuestionModels.Title)
+                </dt>
 
-<script>
-    $(document).ready(function () {
+                <dd>
+                    @Html.DisplayFor(model => model.QuestionModels.Title)
+                </dd>
 
-        $.ajaxSetup({ cache: false });
+                <dt>
+                    Question
+                </dt>
 
-        $(".viewDialog").on("click", function (e) {
-            e.preventDefault();
+                <dd>
+                    @Html.DisplayFor(model => model.QuestionModels.Content)
+                </dd>
 
-            $("<div></div>")
-                .addClass("dialog")
-                .appendTo("body")
-                .dialog({
-                    title: $(this).attr("data-dialog-title"),
-                    close: function () { $(this).remove() },
-                    modal: true
-                })
-                .load(this.href);
+                <dt>
+                    Asked date-time
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.QuestionModels.Created_date)
+                </dd>
+
+                <dt>
+                    User Info
+                </dt>
+
+                <dd>
+                    @ViewBag.User.Email
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Views)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Views)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Created_date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Created_date)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Answer)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Answer)
+                </dd>
+
+                <dt>Categories</dt>
+
+                <dd>
+                    <ul>
+                        @foreach (rector_blog.Models.QuestionCategoryModels questionCategory in Model.QuestionCategories)
+                        {
+                            <li>@questionCategory.Name</li>
+                        }
+                    </ul>
+                </dd>
+
+            </dl>
+        </div>*@
+    @if (User.IsInRole("Admin"))
+    {
+        <p>
+            @Html.ActionLink("Изменить ответ", "Edit", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Редактирование модели" }) |
+            @Html.ActionLink("Изменить вопрос", "Edit", "Question", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Изменение вопроса" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "viewDialog", data_dialog_title = "Удаление модели" }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    }
+
+    <script>
+        $(document).ready(function () {
+
+            $.ajaxSetup({ cache: false });
+
+            $(".viewDialog").on("click", function (e) {
+                e.preventDefault();
+
+                $("<div></div>")
+                    .addClass("dialog")
+                    .appendTo("body")
+                    .dialog({
+                        title: $(this).attr("data-dialog-title"),
+                        close: function () { $(this).remove() },
+                        modal: true
+                    })
+                    .load(this.href);
+            });
         });
-    });
-</script>
+    </script>

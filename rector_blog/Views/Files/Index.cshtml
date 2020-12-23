@@ -45,10 +45,10 @@
                             grid.Column("FileName", header: "FILE NAME", canSort: false),
                             grid.Column("FileUrl", header: "FILE PATH", canSort: false),
                             grid.Column(header: "DOWNLOAD", format:
-                                    @<text>
-                                        <a href="~/Files/DownloadFile?filePath=@item.FileUrl"><img src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Downloads-icon.png" style="width: 15px; height: 15px" title="Download" /></a>
-                                    </text>)
-                      ));
+                                        @<text>
+                                            <a href="~/Files/DownloadFile?filePath=@item.FileUrl"><img src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Downloads-icon.png" style="width: 15px; height: 15px" title="Download" /></a>
+                                        </text>)
+                   ));
                 }
             </div>
         </div>

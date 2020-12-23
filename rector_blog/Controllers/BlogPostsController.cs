@@ -62,6 +62,9 @@ namespace rector_blog.Controllers
             {
                 return HttpNotFound();
             }
+            var topNews = db.BlogPostModel.Include(b => b.BlogCategoryModels).Where(a => a.Id != id).OrderByDescending(b => b.Views).ThenByDescending(b => b.Created_date).ToList();
+            topNews = topNews.Take(2).ToList();
+            ViewBag.TopNews = topNews;
             blogPostsModels.Views = blogPostsModels.Views + 1;
             db.Entry(blogPostsModels).State = EntityState.Modified;
             db.SaveChanges();

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using rector_blog.Models;
 using rector_blog.Filters;
+using Newtonsoft.Json;
 
 namespace rector_blog.Controllers
 {
@@ -47,6 +48,13 @@ namespace rector_blog.Controllers
             ViewBag.BlogPostModelsId = new SelectList(db.BlogPostModel, "Id", "Title");
             return View();
         }
+        public static CaptchaResponse ValidateCaptcha(string response)
+        {
+            string secret = System.Web.Configuration.WebConfigurationManager.AppSettings["recaptchaPrivateKey"];
+            var client = new WebClient();
+            var jsonResult = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
+            return JsonConvert.DeserializeObject<CaptchaResponse>(jsonResult.ToString());
+        }
 
 
         // POST: Comment/Create
@@ -57,12 +65,17 @@ namespace rector_blog.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Is_reply_to_id,Content,User_id,Enabled,Created_date,BlogPostModelsId")] CommentModels commentModels)
         {
-            if (ModelState.IsValid)
+            CaptchaResponse response = ValidateCaptcha(Request["g-recaptcha-response"]);
+            if (response.Success && ModelState.IsValid)
             {
                 commentModels.ApplicationUser = db.Users.Find(commentModels.User_id);
                 db.CommentModel.Add(commentModels);
                 db.SaveChanges();
                 return RedirectToAction("Details", "BlogPosts", new { id = commentModels.BlogPostModelsId});
+            }
+            else
+            {
+                return Content("Error From Google ReCaptcha : " + response.ErrorMessage[0].ToString());
             }
 
             ViewBag.BlogPostModelsId = new SelectList(db.BlogPostModel, "Id", "Title", commentModels.BlogPostModelsId);
