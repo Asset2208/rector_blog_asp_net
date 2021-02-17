@@ -314,6 +314,7 @@ __pycache__/
 *.jmconfig
 
 Web.config
+*.config
 
 # BizTalk build output
 *.btp.cs
